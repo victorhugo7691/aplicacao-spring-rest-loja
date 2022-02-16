@@ -1,0 +1,28 @@
+CREATE TABLE pessoa (
+	pes_id serial PRIMARY KEY,
+	pes_data_nascimento date NOT NULL,
+	pes_telefone integer,
+	pes_status bit NOT NULL);
+	
+ALTER TABLE pessoa
+	ADD COLUMN pes_nome varchar NOT NULL;
+	
+CREATE TABLE loja (
+	loj_id serial PRIMARY KEY,
+	loj_nome varchar NOT NULL,
+	loj_telefone integer NOT NULL,
+	loj_proprietario integer,
+	FOREIGN KEY (loj_proprietario) REFERENCES pessoa (pes_id));
+	
+CREATE TABLE produto(
+	pro_id serial PRIMARY KEY,
+	pro_nome varchar NOT NULL,
+	pro_preco decimal NOT NULL,
+	pro_loja integer,
+	FOREIGN KEY (pro_loja) REFERENCES loja(loj_id));
+	
+CREATE TABLE compra(
+	com_id integer PRIMARY KEY,
+	com_produto integer NOT NULL,
+	FOREIGN KEY (com_produto) REFERENCES produto(pro_id));
+	
