@@ -30,6 +30,9 @@ CREATE TABLE compra(
 ------------------------------------------------------------------
 DADOS
 
-INSERT INTO pessoa VALUES (default, '20000/10/02', 986357421 , '1', 'Carolina Amarilda Rocha');
+INSERT INTO pessoa VALUES (default, '2000/10/02', 986357421 , '1', 'Carolina Amarilda Rocha');
+
+INSERT INTO pessoa VALUES (default, '2001/11/05', 986357251 , '1', 'Amarildo Oli Rocha'),
+(default, '1999/02/02', 965847523, '1', 'João Batista');
 
 
