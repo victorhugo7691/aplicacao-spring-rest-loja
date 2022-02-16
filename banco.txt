@@ -26,3 +26,10 @@ CREATE TABLE compra(
 	com_produto integer NOT NULL,
 	FOREIGN KEY (com_produto) REFERENCES produto(pro_id));
 	
+	
+------------------------------------------------------------------
+DADOS
+
+INSERT INTO pessoa VALUES (default, '20000/10/02', 986357421 , '1', 'Carolina Amarilda Rocha');
+
+
