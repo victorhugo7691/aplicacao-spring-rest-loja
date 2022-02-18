@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { PessoaRoutingModule } from './pessoa-routing.module';
 import { PessoaComponent } from './pessoa/pessoa.component';
@@ -11,7 +13,9 @@ import { PessoaComponent } from './pessoa/pessoa.component';
   ],
   imports: [
     CommonModule,
-    PessoaRoutingModule
+    PessoaRoutingModule,
+    MatTableModule,
+    MatToolbarModule
   ]
 })
 export class PessoaModule { }

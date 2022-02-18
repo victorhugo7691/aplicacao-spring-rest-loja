@@ -1,3 +1,5 @@
+import { PessoaService } from './../services/pessoa.service';
+import { Pessoa } from './pessoa.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoaComponent implements OnInit {
 
-  constructor() { }
+  pessoa: Pessoa[] | any;
+  displayedColumns = ['id', 'nome', 'status', 'telefone'];
+
+  constructor(private pessoaService: PessoaService) {}
 
   ngOnInit(): void {
+    this.pessoa = this.pessoaService.buscarPessoas();
   }
 
 }
