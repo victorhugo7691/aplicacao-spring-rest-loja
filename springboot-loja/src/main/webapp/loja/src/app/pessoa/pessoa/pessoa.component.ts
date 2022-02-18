@@ -1,6 +1,8 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { PessoaService } from './../services/pessoa.service';
 import { Pessoa } from './pessoa.model';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'loja-pessoa',
@@ -9,13 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PessoaComponent implements OnInit {
 
-  pessoa: Pessoa[] | any;
-  displayedColumns = ['id', 'nome', 'status', 'telefone'];
+  pessoa: Observable<Pessoa[]>;
+  displayedColumns = ['id', 'nome', 'status', 'telefone', 'data'];
 
-  constructor(private pessoaService: PessoaService) {}
+  constructor(private pessoaService: PessoaService) {
+    this.pessoa = this.pessoaService.buscarPessoas();
+    //this.pessoaService.buscarPessoas().subscribe(pessoa => this.pessoa = pessoa); // NO caso usar o atributo assim pessoa: Pessoa[] = [];
+  }
 
   ngOnInit(): void {
-    this.pessoa = this.pessoaService.buscarPessoas();
+    //this.pessoa = this.pessoaService.buscarPessoas();
   }
 
 }
