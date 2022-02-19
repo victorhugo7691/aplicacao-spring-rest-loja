@@ -8,6 +8,7 @@ import { Pessoa } from '../pessoa/pessoa.model';
 export class PessoaService {
 
   private readonly API = 'http://localhost:8081/pessoa'
+
   constructor(private httpClient: HttpClient) { }
 
   /*buscarPessoas(){

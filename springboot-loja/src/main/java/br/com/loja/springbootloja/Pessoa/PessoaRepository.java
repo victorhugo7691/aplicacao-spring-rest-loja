@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -31,4 +32,14 @@ public class PessoaRepository {
             return null;
         }
     }
+    
+    public void apagarPessoa(final int id) {
+        final CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
+        final CriteriaDelete<Pessoa> criteria = cb.createCriteriaDelete(Pessoa.class);
+        final Root<Pessoa> from = criteria.from(Pessoa.class);
+        criteria.where(cb.equal(from.get(Pessoa_.id), id));
+        
+        this.entityManager.createQuery(criteria).executeUpdate();
+    }
+    
 }

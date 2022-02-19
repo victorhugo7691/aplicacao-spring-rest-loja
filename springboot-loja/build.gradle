@@ -22,8 +22,42 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/javax.validation/validation-api
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	
+	// Dependências para geração dos Meta Modelos 
+    annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+    annotationProcessor group: 'org.hibernate',            name: 'hibernate-jpamodelgen',              version: '5.4.30.Final'
 }
 
+test {
+	useJUnitPlatform()
+}
+
+// Configuração para geração dos Metamodelos
+	def JPA_MODELGEN_PATH='src/jpaModelgen/java'
+    
+	sourceSets {
+    main {
+        java {
+            srcDir JPA_MODELGEN_PATH
+        	}
+    	}
+	}
+
+	task cleanJpaModelgen {
+    doLast {
+        	project.delete(JPA_MODELGEN_PATH)
+    	}
+	}
+
+	tasks.withType(JavaCompile) {
+    def jpaModelgenDir = file(JPA_MODELGEN_PATH)
+    options.annotationProcessorGeneratedSourcesDirectory = jpaModelgenDir
+    outputs.dir(jpaModelgenDir)
+}
+
+	clean.dependsOn ('cleanJpaModelgen')
+	compileJava.dependsOn ('cleanJpaModelgen')
+	
 tasks.named('test') {
 	useJUnitPlatform()
 }

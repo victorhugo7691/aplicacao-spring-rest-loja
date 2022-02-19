@@ -17,30 +17,31 @@
 <table mat-table [dataSource]="pessoa" class="mat-elevation-z8 demo-table">
 
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <th mat-header-cell *matHeaderCellDef class="texto-centralizado">ID</th>
     <td mat-cell *matCellDef="let pessoa">{{pessoa.id}}</td>
   </ng-container>
 
   <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <th mat-header-cell *matHeaderCellDef class="texto-centralizado">Nome</th>
     <td mat-cell *matCellDef="let pessoa">{{pessoa.nome}}</td>
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <th mat-header-cell *matHeaderCellDef class="texto-centralizado">Status</th>
     <td mat-cell *matCellDef="let pessoa">{{pessoa.status}}</td>
   </ng-container>
 
   <ng-container matColumnDef="telefone">
-    <th mat-header-cell *matHeaderCellDef>Telefone</th>
+    <th mat-header-cell *matHeaderCellDef class="texto-centralizado">Telefone</th>
     <td mat-cell *matCellDef="let pessoa">{{pessoa.telefone}}</td>
   </ng-container>
 
   <ng-container matColumnDef="data">
-    <th mat-header-cell *matHeaderCellDef>Data</th>
+    <th mat-header-cell *matHeaderCellDef class="texto-centralizado">Data</th>
     <td mat-cell *matCellDef="let pessoa">{{pessoa.dataDeNascimento}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<!--<mat-spinner [hidden]="!pessoa" class="spinner"></mat-spinner>-->

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, delay, Observable, of } from 'rxjs';
 
 import { PessoaService } from './../services/pessoa.service';
 import { Pessoa } from './pessoa.model';
@@ -15,7 +15,11 @@ export class PessoaComponent implements OnInit {
   displayedColumns = ['id', 'nome', 'status', 'telefone', 'data'];
 
   constructor(private pessoaService: PessoaService) {
-    this.pessoa = this.pessoaService.buscarPessoas();
+    this.pessoa = this.pessoaService.buscarPessoas().pipe(delay(500),
+    catchError(error => {
+      console.log("Erro ao carregar!");
+      return of([])
+    }));
     //this.pessoaService.buscarPessoas().subscribe(pessoa => this.pessoa = pessoa); // NO caso usar o atributo assim pessoa: Pessoa[] = [];
   }
 

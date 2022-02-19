@@ -25,3 +25,15 @@
 .negrito{
   font-weight: 500;
 }
+
+.texto-centralizado{
+  text-align: center;
+}
+
+.spinner{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
